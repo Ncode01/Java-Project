@@ -12,20 +12,44 @@ public class Teller {
         this.transactionLogger = transactionLogger;
     }
 
+    // public void createAccount() {
+    //     System.out.println("\n----- Create New Account -----");
+    //     String accountNumber = inputUtil.readString(ENTER_ACCOUNT_NUMBER);
+    //     String accountHolderName = inputUtil.readString("Enter account holder name: ");
+
+    //     try {
+    //         bankService.createAccount(accountNumber, accountHolderName);
+    //         System.out.println("Account created successfully!");
+    //         System.out.println("Account details: " + bankService.getAccountDetails(accountNumber));
+    //     } catch (IllegalArgumentException e) {
+    //         System.out.println("Failed to create account: " + e.getMessage());
+    //     }
+    // }
+
     public void createAccount() {
         System.out.println("\n----- Create New Account -----");
+        
+        // Prompt for account number
         String accountNumber = inputUtil.readString(ENTER_ACCOUNT_NUMBER);
+        
+        // Prompt for account holder name
         String accountHolderName = inputUtil.readString("Enter account holder name: ");
 
         try {
+            // Attempt to create the account
             bankService.createAccount(accountNumber, accountHolderName);
             System.out.println("Account created successfully!");
+            
+            // Display account details
             System.out.println("Account details: " + bankService.getAccountDetails(accountNumber));
         } catch (IllegalArgumentException e) {
-            System.out.println("Failed to create account: " + e.getMessage());
+            // Handle invalid input or errors during account creation
+            System.err.println("Error: " + e.getMessage());
+        } finally {
+            // Final message or cleanup (if needed)
+            System.out.println("Returning to main menu...");
         }
     }
-
     public void depositFunds() {
         System.out.println("\n----- Deposit Funds -----");
         String accountNumber = inputUtil.readString(ENTER_ACCOUNT_NUMBER);
