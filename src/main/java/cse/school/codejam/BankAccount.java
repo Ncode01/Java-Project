@@ -2,7 +2,7 @@ package cse.school.codejam;
 
 public class BankAccount {
     private final String accountNumber;
-    private final String accountHolderName;
+    private String accountHolderName; // Made non-final to allow updates
     private double balance;
 
     public BankAccount(String accountNumber, String accountHolderName) {
@@ -38,9 +38,13 @@ public class BankAccount {
     public String getAccountNumber() {
         return accountNumber;
     }
+    
+    public String getAccountHolderName() {
+        return accountHolderName;
+    }
 
     public void setAccountHolderName(String name) {
         if (name == null || name.isEmpty()) throw new IllegalArgumentException("Name cannot be empty.");
-        throw new UnsupportedOperationException("Updating account holder name is not supported.");
+        this.accountHolderName = name; // Update the account holder name
     }
 }

@@ -39,4 +39,25 @@ public class Transaction {
         }
         return msg + " on " + timestamp;
     }
+    
+    // Adding getters for all properties to support test cases
+    public TransactionType getType() {
+        return type;
+    }
+    
+    public String getFromAccountNumber() {
+        return fromAccountNumber;
+    }
+    
+    public String getToAccountNumber() {
+        return toAccountNumber;
+    }
+    
+    public double getAmount() {
+        return amount;
+    }
+    
+    public LocalDateTime getTimestamp() {
+        return timestamp;
+    }
 }
