@@ -15,12 +15,14 @@ public class InputUtil {
     }
 
     public double readDouble(String prompt) {
-        System.out.print(prompt);
-        try {
-            return Double.parseDouble(scanner.nextLine().trim());
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid number. Try again.");
-            return -1.0;
+        while (true) {
+            System.out.print(prompt);
+            try {
+                double value = Double.parseDouble(scanner.nextLine().trim());
+                return value;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid number. Try again.");
+            }
         }
     }
 

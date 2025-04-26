@@ -41,6 +41,6 @@ public class BankAccount {
 
     public void setAccountHolderName(String name) {
         if (name == null || name.isEmpty()) throw new IllegalArgumentException("Name cannot be empty.");
-        throw new IllegalArgumentException("I can't update the account holder's name");
+        throw new UnsupportedOperationException("Updating account holder name is not supported.");
     }
 }
