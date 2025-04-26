@@ -9,7 +9,7 @@ public class Main {
         AccountRepository accountRepository = new AccountRepository();
         BankService bankService = new BankServiceImpl(transactionLogger, accountRepository);
         Teller teller = new Teller(inputUtil, bankService, transactionLogger);
-
+        
         while (true) {
             System.out.println("====== CodeJam Bank CLI ======");
             System.out.println("1. Create Account");
@@ -21,7 +21,6 @@ public class Main {
             System.out.println("7. Exit");
 
             int option = teller.getUserPreference();
-
             try {
                 switch (option) {
                     case 1:
