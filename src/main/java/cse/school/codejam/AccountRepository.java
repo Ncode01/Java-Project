@@ -6,6 +6,9 @@ public class AccountRepository {
     private final Map<String, BankAccount> accounts = new HashMap<>();
 
     public boolean accountExists(String accountNumber) {
+        if (accountNumber == null || accountNumber.isEmpty()) {
+            return false;
+        }
         return accounts.containsKey(accountNumber);
     }
 
@@ -17,8 +20,11 @@ public class AccountRepository {
     }
 
     public BankAccount getAccount(String accountNumber) {
+        if (accountNumber == null || accountNumber.isEmpty()) {
+            throw new IllegalArgumentException("Account number cannot be null or empty.");
+        }
         if (!accountExists(accountNumber)) {
-            throw new IllegalArgumentException("Account not found.");
+            throw new IllegalArgumentException("Account with number " + accountNumber + " was not found.");
         }
         return accounts.get(accountNumber);
     }

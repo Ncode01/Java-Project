@@ -47,6 +47,9 @@ public class BankServiceImpl implements BankService {
         if (amount <= 0) {
             throw new IllegalArgumentException("Transfer amount must be positive.");
         }
+        if (fromAccountNumber.equals(toAccountNumber)) {
+            throw new IllegalArgumentException("Cannot transfer money to the same account.");
+        }
         BankAccount fromAccount = accountRepository.getAccount(fromAccountNumber);
         BankAccount toAccount = accountRepository.getAccount(toAccountNumber);
         fromAccount.withdraw(amount);
